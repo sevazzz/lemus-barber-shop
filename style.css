@@ -1,0 +1,797 @@
+/* ==========================================================================
+   1. ESTILOS GENERALES Y CONFIGURACIÓN BASE
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background-color: rgb(20, 20, 20);
+    font-family: 'Playfair Display', serif;
+    color: white;
+}
+
+/* ==========================================================================
+   2. ENCABEZADO FIJO (STICKY / FIXED)
+   ========================================================================== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+.encabezado {
+    width: 100%;
+    padding: 15px 20px;
+    text-align: center;
+    background: rgba(17, 17, 17, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.encabezado h1 {
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #f3f3f3;
+}
+
+.encabezado a {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.encabezado a:hover {
+    transform: scale(1.05);
+}
+
+.encabezado img {
+    width: 110px;
+    height: auto;
+    object-fit: contain;
+}
+
+main {
+    padding-top: 190px;
+}
+
+/* ==========================================================================
+   3. HERO Y CARRUSEL INFINITO DE CORTES
+   ========================================================================== */
+.hero {
+    width: 100%;
+    padding: 40px 0;
+}
+
+.carousel {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 20px 0;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+.carousel-track {
+    display: flex;
+    width: max-content;
+    gap: 16px; 
+    animation: scroll 30s linear infinite;
+}
+
+.carousel-track img {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+    flex-shrink: 0;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.carousel:hover .carousel-track {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-33.333% - 5.33px)); }
+}
+
+/* ==========================================================================
+   4. SECCIÓN: ACERCA DE MÍ (SOBRE MELQUIN)
+   ========================================================================== */
+.acercademi {
+    max-width: 1100px; 
+    margin: 80px auto 40px auto; 
+    padding: 0 10px; 
+    display: flex;
+    align-items: stretch; 
+    justify-content: space-between;
+    gap: 50px; 
+}
+
+.acercademi-contenido {
+    flex: 1; 
+}
+
+.acercademi-contenido h2 {
+    font-size: 2.8rem; 
+    color: #ffffff;
+    margin-bottom: 5px;
+    font-weight: 400; 
+    letter-spacing: 1px;
+}
+
+.acercademi-contenido .subtitulo {
+    font-size: 1rem;
+    color: #a0a0a0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 35px; 
+    font-weight: 500;
+}
+
+.acercademi-contenido p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #cccccc;
+    margin-bottom: 25px; 
+    font-weight: 300;
+    text-align: justify; 
+}
+
+.acercademi-contenido p:last-child {
+    margin-bottom: 0;
+}
+
+.acercademi-contenido strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.acercademi-imagen {
+    flex: 1; 
+    display: flex;
+    justify-content: center;
+}
+
+.acercademi-imagen img {
+    width: 100%;
+    max-width: 500px; 
+    height: 100%; 
+    border-radius: 30px; 
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    object-fit: cover; 
+}
+
+/* ==========================================================================
+   5. SECCIÓN: MIS SERVICIOS
+   ========================================================================== */
+.servicios {
+    max-width: 1200px; 
+    margin: 80px auto; 
+    padding: 20px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;    
+    gap: 40px; 
+}
+
+.servicios h2 {
+    font-size: 2rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 3px;    
+    font-weight: 600;
+}
+
+.servicios h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 10px auto 0 auto;
+}
+
+.contenedor-servicios {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px;
+    width: 100%;
+}
+
+.tarjeta-servicio {
+    background-color: rgba(255, 255, 255, 0.02); 
+    border: 1px solid rgba(255, 255, 255, 0.05);  
+    border-radius: 20px;
+    padding: 35px 20px;
+    text-align: center;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tarjeta-servicio:hover {
+    transform: translateY(-8px);
+    background-color: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.icono-servicio {
+    font-size: 2rem;
+    color: #a0a0a0; 
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+}
+
+.tarjeta-servicio:hover .icono-servicio {
+    color: #ffffff; 
+}
+
+.tarjeta-servicio h3 {
+    font-size: 1.25rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.precio-servicio {
+    font-size: 1.6rem;
+    color: #ffffff;
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-family: 'Playfair Display', serif;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4px 18px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+}
+
+.tarjeta-servicio:hover .precio-servicio {
+    background: #ffffff;
+    color: #000000;
+    border-color: transparent;
+}
+
+.tarjeta-servicio p {
+    font-size: 0.9rem;
+    color: #aaaaaa;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+/* ==========================================================================
+   6. SECCIÓN: RESEÑAS DE GOOGLE (TRUSTINDEX)
+   ========================================================================== */
+.reseñas-google {
+    max-width: 1000px;
+    margin: 80px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.reseñas-google h2 {
+    font-size: 2rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 3px;    
+    font-weight: 600;
+}
+
+.reseñas-google h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 10px auto 0 auto;
+}
+
+.reseñas-descripcion {
+    font-size: 1.05rem;
+    color: #cccccc;
+    font-weight: 300;
+    max-width: 650px;
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.contenedor-widget {
+    width: 100%;
+    text-align: center;
+}
+
+/* ==========================================================================
+   7. SECCIÓN: UBÍCANOS Y ENTORNO DEL LOCAL
+   ========================================================================== */
+.ubicanos {
+    max-width: 1200px; 
+    margin: 80px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.ubicanos h2 {
+    font-size: 2rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 3px;    
+    font-weight: 600;
+}
+
+.ubicanos h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 10px auto 0 auto;
+}
+
+.contenedor-ubicanos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.info-ubicacion {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.info-ubicacion h3 {
+    font-size: 1.6rem;
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+.info-ubicacion .direccion {
+    font-size: 1rem;
+    color: #cccccc;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    font-weight: 300;
+}
+
+.info-ubicacion .direccion i {
+    color: #ffffff;
+    margin-right: 8px;
+}
+
+.horarios-titulo {
+    font-size: 1.1rem;
+    color: #ffffff;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.horarios-titulo i {
+    margin-right: 8px;
+    color: #a0a0a0;
+}
+
+.lista-horarios {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.lista-horarios li {
+    font-size: 0.95rem;
+    color: #aaaaaa;
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+
+.lista-horarios li span {
+    color: #ffffff;
+    font-weight: 500;
+    display: inline-block;
+    width: 130px;
+}
+
+.btn-como-llegar {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.04);
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 30px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    text-align: center;
+    margin-bottom: 25px;
+    width: max-content;
+}
+
+.btn-como-llegar i {
+    margin-right: 8px;
+}
+
+.btn-como-llegar:hover {
+    background-color: #ffffff;
+    color: #000000;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+}
+
+.mapa-box {
+    width: 100%;
+    margin-top: auto; 
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.mapa-box iframe {
+    display: block;
+    filter: grayscale(30%) invert(90%) contrast(100%) brightness(92%);
+}
+
+/* CARRUSEL DE IMÁGENES LIMPIAS */
+.carrusel-local-container {
+    flex: 1.1;
+    position: relative;
+    width: 100%;
+    height: 480px; 
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+.carrusel-local-slider {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slide-local {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s;
+    z-index: 1;
+}
+
+.slide-local.activo {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+}
+
+.slide-local img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Flechas estilizadas */
+.flecha-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 1.1rem;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.flecha-nav:hover {
+    background-color: #ffffff;
+    color: #000000;
+    border-color: transparent;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.flecha-nav.izq { left: 15px; }
+.flecha-nav.der { right: 15px; }
+
+/* ==========================================================================
+   8. SECCIÓN: RESERVA TU CITA
+   ========================================================================== */
+.reserva-cta {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+    justify-content: center; 
+    text-align: center;      
+    gap: 20px;
+}
+
+.reserva-cta h2 {
+    font-size: 2rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 3px;    
+    font-weight: 600;
+}
+
+.reserva-cta h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 10px auto 0 auto;
+}
+
+.reserva-descripcion {
+    font-size: 1.05rem;
+    color: #cccccc;
+    font-weight: 300;
+    max-width: 650px;
+    line-height: 1.6;
+}
+
+.btn-agendar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: max-content;  
+    margin-top: 15px;    
+    background-color: rgba(255, 255, 255, 0.03); 
+    color: #ffffff;
+    text-decoration: none;
+    padding: 14px 32px;
+    border: 1px solid rgba(255, 255, 255, 0.15); 
+    border-radius: 50px;
+    font-size: 1.05rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-agendar i {
+    font-size: 1.3rem;
+    color: #25d366; 
+    transition: color 0.3s ease;
+}
+
+.btn-agendar:hover {
+    transform: translateY(-4px);
+    background-color: #25d366; 
+    border-color: transparent;
+    color: #ffffff;
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+}
+
+.btn-agendar:hover i {
+    color: #ffffff;
+}
+
+.linea-separadora {
+    max-width: 900px;
+    height: 1px;
+    margin: 50px auto; 
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+}
+
+/* ==========================================================================
+   9. PIE DE PÁGINA (FOOTER)
+   ========================================================================== */
+footer {
+    padding: 60px 20px 40px 20px;
+    background: #111111;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-contenido {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+footer h2 {
+    font-size: 1.6rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 3px;    
+    font-weight: 600;
+}
+
+footer h2::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.15);
+    margin: 10px auto 0 auto;
+}
+
+.iconos-redes {
+    display: flex;
+    gap: 25px; 
+}
+
+.iconos-redes a {
+    color: #ffffff;
+    font-size: 1.2rem;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.02); 
+    border: 1px solid rgba(255, 255, 255, 0.08);    
+    border-radius: 50%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.iconos-redes a:hover {
+    transform: translateY(-6px); 
+    border-color: transparent;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.iconos-redes a[title="Facebook"]:hover { background-color: #1877f2; box-shadow: 0 0 15px rgba(24, 119, 242, 0.3); }
+.iconos-redes a[title="Instagram"]:hover { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); box-shadow: 0 0 15px rgba(220, 39, 67, 0.3); }
+.iconos-redes a[title="TikTok"]:hover { background-color: #000000; border: 1px solid #00f2fe; color: #00f2fe; box-shadow: 0 0 15px rgba(0, 242, 254, 0.3); }
+.iconos-redes a[title="WhatsApp"]:hover { background-color: #25d366; box-shadow: 0 0 15px rgba(37, 211, 102, 0.3); }
+
+.footer-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+    color: #777777;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+/* ==========================================================================
+   10. BOTÓN FLOTANTE DE WHATSAPP
+   ========================================================================== */
+.whatsapp-flotante {
+    position: fixed;
+    bottom: 30px;
+    left: 30px; 
+    width: 60px;
+    height: 60px;
+    background-color: #25d366;
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    z-index: 9999; 
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.whatsapp-flotante:hover {
+    transform: scale(1.1) translateY(-5px);
+    background-color: #20ba5a;
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+}
+
+/* ==========================================================================
+   11. DISEÑO RESPONSIVO (MÓVILES)
+   ========================================================================== */
+@media(max-width: 768px){
+    main { padding-top: 145px; }
+    .encabezado { padding: 12px 15px; gap: 5px; }
+    .encabezado h1 { font-size: 1.1rem; letter-spacing: 1px; }
+    .encabezado img { width: 85px; }
+    .carousel-track img { width: 220px; height: 300px; }
+
+    .acercademi {
+        flex-direction: column-reverse; 
+        align-items: center; 
+        text-align: center;
+        gap: 30px;
+        padding: 0 20px;
+    }
+
+    .acercademi-contenido h2 { font-size: 2.2rem; }
+    .acercademi-contenido p { text-align: center; }
+    .acercademi-imagen img { max-width: 280px; height: auto; border-radius: 20px; }
+
+    .contenedor-servicios { grid-template-columns: 1fr; gap: 20px; }
+    .tarjeta-servicio { padding: 30px 20px; }
+
+    .reseñas-google h2 { font-size: 1.6rem; }
+    .reseñas-descripcion { font-size: 0.95rem; }
+
+    .contenedor-ubicanos {
+        flex-direction: column;
+        padding: 20px;
+        gap: 35px;
+    }
+    
+    .info-ubicacion { text-align: center; width: 100%; }
+    .btn-como-llegar { width: 100%; margin-bottom: 20px; }
+    .lista-horarios li span { width: auto; display: block; margin-bottom: 2px; }
+    .lista-horarios li { margin-bottom: 12px; }
+
+    .carrusel-local-container {
+        width: 100%;
+        height: 300px; 
+    }
+    .flecha-nav {
+        width: 38px;
+        height: 38px;
+        font-size: 0.9rem;
+    }
+
+    .reserva-cta h2 { font-size: 1.6rem; }
+    .reserva-descripcion { font-size: 0.95rem; }
+    .btn-agendar { width: 100%; justify-content: center; font-size: 1rem; margin-top: 10px; }
+
+    .linea-separadora { max-width: 80%; margin: 40px auto; }
+    footer { padding: 40px 15px; }
+    footer h2 { font-size: 1.3rem; }
+    .iconos-redes a { width: 44px; height: 44px; font-size: 1.1rem; }
+
+    .whatsapp-flotante { width: 50px; height: 50px; font-size: 1.8rem; bottom: 20px; left: 20px; }
+}
