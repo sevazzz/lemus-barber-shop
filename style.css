@@ -327,7 +327,7 @@ main {
 }
 
 /* ==========================================================================
-   7. SECCIÓN: UBÍCANOS Y ENTORNO DEL LOCAL
+   7. SECCIÓN: UBÍCANOS Y ENTORNO DEL LOCAL (CARRUSEL INTEGRADO)
    ========================================================================== */
 .ubicanos {
     max-width: 1200px; 
@@ -373,6 +373,7 @@ main {
     flex: 1;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     width: 100%;
 }
 
@@ -470,7 +471,7 @@ main {
     filter: grayscale(30%) invert(90%) contrast(100%) brightness(92%);
 }
 
-/* CARRUSEL DE IMÁGENES LIMPIAS */
+/* CARRUSEL DE LAS IMÁGENES DEL LOCAL */
 .carrusel-local-container {
     flex: 1.1;
     position: relative;
@@ -512,7 +513,6 @@ main {
     object-fit: cover;
 }
 
-/* Flechas estilizadas */
 .flecha-nav {
     position: absolute;
     top: 50%;
@@ -736,7 +736,7 @@ footer h2::after {
 }
 
 /* ==========================================================================
-   11. DISEÑO RESPONSIVO (MÓVILES)
+   11. DISEÑO RESPONSIVO CORREGIDO (OPCIONES CENTRADAS EN CELULAR)
    ========================================================================== */
 @media(max-width: 768px){
     main { padding-top: 145px; }
@@ -760,20 +760,71 @@ footer h2::after {
     .contenedor-servicios { grid-template-columns: 1fr; gap: 20px; }
     .tarjeta-servicio { padding: 30px 20px; }
 
-    .reseñas-google h2 { font-size: 1.6rem; }
-    .reseñas-descripcion { font-size: 0.95rem; }
+    /* Forzar el centrado absoluto de la sección de Reseñas de Google */
+    .reseñas-google h2 { 
+        text-align: center; 
+        width: 100%; 
+    }
+    .reseñas-descripcion { 
+        text-align: center; 
+        font-size: 0.95rem; 
+        margin-left: auto;
+        margin-right: auto;
+    }
 
+    /* Forzar el centrado de la sección Ubícanos y Conócenos */
+    .ubicanos h2 {
+        text-align: center;
+        width: 100%;
+    }
     .contenedor-ubicanos {
         flex-direction: column;
         padding: 20px;
         gap: 35px;
     }
     
-    .info-ubicacion { text-align: center; width: 100%; }
-    .btn-como-llegar { width: 100%; margin-bottom: 20px; }
-    .lista-horarios li span { width: auto; display: block; margin-bottom: 2px; }
-    .lista-horarios li { margin-bottom: 12px; }
+    /* Reajuste de la info interna para centrar text-align e iconos */
+    .info-ubicacion { 
+        text-align: center; 
+        width: 100%; 
+        align-items: center; /* Alinea los elementos del flex al centro */
+    }
+    .info-ubicacion h3 {
+        text-align: center;
+        width: 100%;
+    }
+    .info-ubicacion .direccion {
+        text-align: center;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .horarios-titulo {
+        text-align: center;
+        width: 100%;
+    }
+    
+    /* Centrado de la lista estructural de los horarios */
+    .lista-horarios {
+        display: inline-block;
+        text-align: left; /* Mantiene fijos los textos internos entre sí */
+        margin: 0 auto 25px auto;
+        width: max-content;
+    }
+    .lista-horarios li span { 
+        width: auto; 
+        display: block; 
+        margin-bottom: 2px; 
+    }
+    .lista-horarios li { 
+        margin-bottom: 12px; 
+    }
 
+    .btn-como-llegar { 
+        width: 100%; 
+        margin-bottom: 20px; 
+    }
+
+    /* Ajustes adaptativos para el nuevo carrusel en celular */
     .carrusel-local-container {
         width: 100%;
         height: 300px; 
@@ -784,8 +835,8 @@ footer h2::after {
         font-size: 0.9rem;
     }
 
-    .reserva-cta h2 { font-size: 1.6rem; }
-    .reserva-descripcion { font-size: 0.95rem; }
+    .reserva-cta h2 { font-size: 1.6rem; text-align: center; width: 100%; }
+    .reserva-descripcion { font-size: 0.95rem; text-align: center; }
     .btn-agendar { width: 100%; justify-content: center; font-size: 1rem; margin-top: 10px; }
 
     .linea-separadora { max-width: 80%; margin: 40px auto; }
