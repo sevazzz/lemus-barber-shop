@@ -327,7 +327,7 @@ main {
 }
 
 /* ==========================================================================
-   7. SECCIÓN: UBÍCANOS Y ENTORNO DEL LOCAL (CARRUSEL INTEGRADO)
+   7. SECCIÓN: UBÍCANOS Y ENTORNO DEL LOCAL
    ========================================================================== */
 .ubicanos {
     max-width: 1200px; 
@@ -736,7 +736,7 @@ footer h2::after {
 }
 
 /* ==========================================================================
-   11. DISEÑO RESPONSIVO CORREGIDO (OPCIONES CENTRADAS EN CELULAR)
+   11. DISEÑO RESPONSIVO TOTALMENTE CORREGIDO (MÓVILES DELGADOS / IPHONE XR)
    ========================================================================== */
 @media(max-width: 768px){
     main { padding-top: 145px; }
@@ -761,74 +761,122 @@ footer h2::after {
     .tarjeta-servicio { padding: 30px 20px; }
 
     /* Forzar el centrado absoluto de la sección de Reseñas de Google */
+    .reseñas-google {
+        width: 100%;
+        padding: 20px 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    
     .reseñas-google h2 { 
         text-align: center; 
         width: 100%; 
+        margin: 0 auto;
     }
+    
     .reseñas-descripcion { 
         text-align: center; 
         font-size: 0.95rem; 
-        margin-left: auto;
-        margin-right: auto;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto 15px auto;
     }
 
-    /* Forzar el centrado de la sección Ubícanos y Conócenos */
+    /* Forzar el centrado y evitar desbordamientos en la sección Ubícanos */
+    .ubicanos {
+        width: 100%;
+        padding: 20px 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
     .ubicanos h2 {
         text-align: center;
         width: 100%;
+        margin: 0 auto;
     }
+
     .contenedor-ubicanos {
         flex-direction: column;
-        padding: 20px;
-        gap: 35px;
+        padding: 20px 15px;
+        gap: 30px;
+        width: 100%;
+        align-items: center;
     }
     
-    /* Reajuste de la info interna para centrar text-align e iconos */
     .info-ubicacion { 
         text-align: center; 
         width: 100%; 
-        align-items: center; /* Alinea los elementos del flex al centro */
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
     }
+
     .info-ubicacion h3 {
         text-align: center;
         width: 100%;
+        font-size: 1.4rem;
     }
+
     .info-ubicacion .direccion {
         text-align: center;
         width: 100%;
+        font-size: 0.95rem;
         margin-bottom: 20px;
     }
+
     .horarios-titulo {
         text-align: center;
         width: 100%;
+        margin-bottom: 10px;
     }
     
-    /* Centrado de la lista estructural de los horarios */
+    /* Lista de horarios optimizada sin max-content para evitar desvíos en iPhone XR */
     .lista-horarios {
-        display: inline-block;
-        text-align: left; /* Mantiene fijos los textos internos entre sí */
+        width: 100%;
+        max-width: 290px;
         margin: 0 auto 25px auto;
-        width: max-content;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
+
+    .lista-horarios li { 
+        font-size: 0.95rem;
+        margin-bottom: 8px; 
+        text-align: center;
+        width: 100%;
+    }
+
     .lista-horarios li span { 
         width: auto; 
-        display: block; 
-        margin-bottom: 2px; 
-    }
-    .lista-horarios li { 
-        margin-bottom: 12px; 
+        display: inline-block; 
+        margin-right: 5px;
+        font-weight: 600;
     }
 
     .btn-como-llegar { 
         width: 100%; 
-        margin-bottom: 20px; 
+        max-width: 290px;
+        margin: 0 auto 20px auto; 
     }
 
-    /* Ajustes adaptativos para el nuevo carrusel en celular */
+    .mapa-box {
+        width: 100%;
+    }
+
     .carrusel-local-container {
         width: 100%;
-        height: 300px; 
+        height: 280px; 
     }
+
     .flecha-nav {
         width: 38px;
         height: 38px;
@@ -837,7 +885,7 @@ footer h2::after {
 
     .reserva-cta h2 { font-size: 1.6rem; text-align: center; width: 100%; }
     .reserva-descripcion { font-size: 0.95rem; text-align: center; }
-    .btn-agendar { width: 100%; justify-content: center; font-size: 1rem; margin-top: 10px; }
+    .btn-agendar { width: 100%; max-width: 290px; justify-content: center; font-size: 1rem; margin: 10px auto 0 auto; }
 
     .linea-separadora { max-width: 80%; margin: 40px auto; }
     footer { padding: 40px 15px; }
