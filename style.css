@@ -689,9 +689,7 @@ footer h2::after {
     margin-top: 10px;
 }
 
-/* ========================
-BOTÓN FLOTANTE DE WHATSAPP
-   ========================= */
+/* BOTÓN FLOTANTE DE WHATSAPP */
 .whatsapp-flotante {
     position: fixed;
     bottom: 30px;
